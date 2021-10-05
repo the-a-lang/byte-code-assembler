@@ -7,12 +7,14 @@
 
 #include "item/Item.h"
 #include <vector>
+#include <stdexcept>
 
 namespace BCA {
-    class Command {
+    struct Command {
     public:
         enum Token {
-            DECL = 0,
+            NO_COMMAND = 0,
+            DECL,
             MOV,
             ADD,
             SUB,
@@ -20,15 +22,12 @@ namespace BCA {
             DIV,
             CALL,
             RET,
-            PUSH,
-            POP
         };
         Token token;
         std::vector<Item> operands;
 
-        explicit Command(const std::string&,const std::initializer_list<Item>& = {});
+        explicit Command(const std::string &,std::vector<Item>  = {});
 
-    private:
         static Token toToken(const std::string&);
     };
 }//namespace BCA

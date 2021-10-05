@@ -6,8 +6,4 @@
 
 using namespace BCA;
 
-Item::Item(String str) : holder(str), type(STRING) {/*empty*/}
-
-Item::Item(Float f) : holder(f), type(FLOAT) {/*empty*/}
-
-Item::Item(Int i) : holder(i), type(INT) {/*empty*/}
+Item::Item(std::string s, Type t) : str(std::move(s)), type(t) {/*empty*/}

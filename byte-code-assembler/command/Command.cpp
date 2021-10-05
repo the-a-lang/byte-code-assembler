@@ -3,11 +3,13 @@
 //
 
 #include "Command.h"
-#include <stdexcept>
+#include <utility>
 
-BCA::Command::Command(const std::string &s, const std::initializer_list<Item> &il) : token(toToken(s)), operands(il) {/*empty*/}
+using namespace BCA;
 
-BCA::Command::Token BCA::Command::toToken(const std::string &str) {
+Command::Command(const std::string &s, std::vector<Item> il) : token(toToken(s)), operands(std::move(il)) {/*empty*/}
+
+Command::Token Command::toToken(const std::string& str) {
     if(str == "DECL"){
         return DECL;
     }else if(str == "MOV"){
@@ -24,11 +26,7 @@ BCA::Command::Token BCA::Command::toToken(const std::string &str) {
         return CALL;
     }else if(str == "RET"){
         return RET;
-    }else if(str == "PUSH"){
-        return PUSH;
-    }else if(str == "POP"){
-        return POP;
     }else{
-        throw std::runtime_error("BCA::Command::toToken");
+        return NO_COMMAND;
     }
 }

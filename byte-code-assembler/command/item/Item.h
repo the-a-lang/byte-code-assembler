@@ -11,23 +11,15 @@
 namespace BCA {
     struct Item {
     public:
-        using String = std::string;
-        using Float = long double;
-        using Int = long long int;
-        using HolderType = std::variant<String, Float, Int>;
-
         enum Type{
-            STRING,
-            FLOAT,
-            INT
+            ID,
+            KEYWORD
         };
 
-        HolderType holder;
+        std::string str;
         Type type;
 
-        Item(String);
-        Item(Float);
-        Item(Int);
+        Item(std::string,Type);
     };
 }//namespace BCA
 
