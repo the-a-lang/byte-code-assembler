@@ -12,7 +12,7 @@ namespace BCA {
     public:
         enum Type{
             NO_TYPE = 0,
-            INT,
+            INT,//bytes
             FLOAT,
             STRING
         };

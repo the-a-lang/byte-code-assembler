@@ -7,17 +7,18 @@
 
 #include "../lexer/Lexer.h"
 #include "../data/Data.h"
-#include <unordered_map>
+#include <map>
 
 namespace BCA {
     class Parser {
+        friend class ByteCodeGenerator;
     private:
-        std::unordered_map<std::string,std::string> headerHolder{
-                {"main_fun",""}
+        std::map<std::string,std::string> headerHolder{
+                {"global",""}
         };
         std::vector<Data> dataHolder;
         std::vector<Command> codeHolder;
-        std::unordered_map<std::string,decltype(codeHolder)::size_type> labelHolder;
+        std::map<std::string,decltype(codeHolder)::size_type> labelHolder;
         Lexer lexer;
 
     public:

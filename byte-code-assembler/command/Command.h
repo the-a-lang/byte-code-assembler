@@ -12,7 +12,7 @@
 namespace BCA {
     struct Command {
     public:
-        enum Token {
+        enum Token {//all commands only work with variables
             NO_COMMAND = 0,
             DECL,
             MOV,
@@ -26,7 +26,7 @@ namespace BCA {
         Token token;
         std::vector<Item> operands;
 
-        explicit Command(const std::string &,std::vector<Item>  = {});
+        explicit Command(const std::string &,std::vector<Item> = {});
 
         static Token toToken(const std::string&);
     };

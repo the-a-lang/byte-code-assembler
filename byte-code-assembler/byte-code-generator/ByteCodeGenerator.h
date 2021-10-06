@@ -7,11 +7,37 @@
 
 #include "../parser/Parser.h"
 
+int main();
+
 namespace BCA {
     class ByteCodeGenerator {
-    private:
-
+        friend int ::main();
     public:
+        enum CommandInstructions{
+            DECL_BY_VALUE = 1,
+            DECL,
+            MOV,
+            ADD,
+            SUB,
+            MUL,
+            DIV,
+            CALL,
+            RET,
+        };
+    private:
+        Parser parser;
+        std::string holder;
+    public:
+        explicit ByteCodeGenerator(Parser);
+
+    private:
+        void setData();
+        void setCode();
+
+        static std::string getName(const std::string&);
+
+        template<typename T>
+        static std::string toString(T t);
     };
 }//namespace BCA
 
